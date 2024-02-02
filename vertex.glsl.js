@@ -1,4 +1,4 @@
-export default `#version 300 es
+export default /* glsl */ `#version 300 es
 
 in vec2 position;
 in vec4 color;
