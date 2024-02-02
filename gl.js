@@ -32,7 +32,7 @@ window.stopAnimation = function() {
 }
 
 function updateCurrentColor() {
-    
+
     // 0
     // currColor[0] += (2.0*Math.random()-1.0)*0.1;
     // currColor[1] += (2.0*Math.random()-1.0)*0.1;
@@ -69,7 +69,7 @@ function createShader(type, source) {
         var info = gl.getShaderInfoLog(shader);
         console.log('Could not compile WebGL program:' + info);
     }
-    
+
     return shader;
 }
 
@@ -96,7 +96,7 @@ function createBuffer(vertices) {
 }
 
 function createVAO(posAttribLoc, colorAttribLoc, posBuffer, colorBuffer, posColorBuffer) {
-    
+
     var vao = gl.createVertexArray();
 
     // Two buffers approach
@@ -129,7 +129,7 @@ function createVAO(posAttribLoc, colorAttribLoc, posBuffer, colorBuffer, posColo
     // size = 4;
     // type = gl.FLOAT;
     // normalization = false;
-    // stride = 6 * 4; 
+    // stride = 6 * 4;
     // offset = 2 * 4;
     // gl.vertexAttribPointer(colorAttribLoc, size, type, normalization, stride, offset);
 
@@ -215,7 +215,7 @@ function initialize() {
     canvas.height = canvas.clientHeight;
 
     gl = canvas.getContext("webgl2");
-    
+
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
@@ -224,7 +224,7 @@ function initialize() {
     console.log(triangles);
     currColor = [0, 0, 0, 1];
     newColor = currColor;
-    
+
     var vertexShader = createShader(gl.VERTEX_SHADER, vertexShaderSrc);
     var fragmentShader = createShader(gl.FRAGMENT_SHADER, fragmentShaderSrc);
     program = createProgram(vertexShader, fragmentShader);
