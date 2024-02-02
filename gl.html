@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<link rel="shortcut icon" href="#">
+<style>
+    body { 
+        background-color: rgb(150, 150, 150);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #glcanvas {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: white;
+    }
+    #config {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        text-align: center;
+        background-color: #001d62bd;
+        color: white;
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+    }
+</style>
+<body>
+    <script src="gl.js" type="module"></script>
+    <canvas id="glcanvas"></canvas>
+    <div id="config">
+        <table>
+            <tr>
+                <td>R</td>
+                <td><input id="sliderR" type="range" min="0" max="255" value="0" oninput="window.updateColor()"></td>
+            </tr>
+            <tr>
+                <td>G</td>
+                <td><input id="sliderG" type="range" min="0" max="255" value="0" oninput="window.updateColor()"></td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td><input id="sliderB" type="range" min="0" max="255" value="0" oninput="window.updateColor()"></td>
+            </tr>
+            <tr>
+                <td>Alpha</td>
+                <td><input id="sliderA" type="range" min="0" max="255" value="255" oninput="window.updateColor()"></td>
+            </tr>
+            <tr>
+                <td>Triangles</td>
+                <td><input id="triangles" type="range" min="1" max="100" value="1" oninput="window.updateTriangles()"></td>
+            </tr>
+        </table>
+        <input type="button" value="Start" onclick="window.startAnimation()"><input type="button" value="Stop" onclick="window.stopAnimation()">
+    </div>
+</body>
+</html>
