@@ -33,14 +33,6 @@ window.stopAnimation = function() {
 
 function updateCurrentColor() {
 
-    // 0
-    // currColor[0] += (2.0*Math.random()-1.0)*0.1;
-    // currColor[1] += (2.0*Math.random()-1.0)*0.1;
-    // currColor[2] += (2.0*Math.random()-1.0)*0.1;
-    // currColor[0] = Math.min(Math.max(0, currColor[0]), 1);
-    // currColor[1] = Math.min(Math.max(0, currColor[1]), 1);
-    // currColor[2] = Math.min(Math.max(0, currColor[2]), 1);
-
     // 1
     currColor[0] += (newColor[0]-currColor[0])*0.01;
     currColor[1] += (newColor[1]-currColor[1])*0.01;
@@ -95,7 +87,7 @@ function createBuffer(vertices) {
     return buffer;
 }
 
-function createVAO(posAttribLoc, colorAttribLoc, posBuffer, colorBuffer, posColorBuffer) {
+function createVAO(posAttribLoc, colorAttribLoc, posBuffer, colorBuffer) {
 
     var vao = gl.createVertexArray();
 
@@ -112,27 +104,6 @@ function createVAO(posAttribLoc, colorAttribLoc, posBuffer, colorBuffer, posColo
     type = gl.FLOAT;
     gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
     gl.vertexAttribPointer(colorAttribLoc, size, type, false, 0, 0);
-
-
-    // Single buffer approach
-    // gl.bindVertexArray(vao);
-    // gl.bindBuffer(gl.ARRAY_BUFFER, posColorBuffer);
-    // gl.enableVertexAttribArray(posAttribLoc);
-    // var size = 2; // number of components per attribute
-    // var type = gl.FLOAT;
-    // var normalization = false;
-    // var stride = 6 * 4; // offset in bytes to next attribute
-    // var offset = 0;
-    // gl.vertexAttribPointer(posAttribLoc, size, type, false, stride, offset);
-
-    // gl.enableVertexAttribArray(colorAttribLoc);
-    // size = 4;
-    // type = gl.FLOAT;
-    // normalization = false;
-    // stride = 6 * 4;
-    // offset = 2 * 4;
-    // gl.vertexAttribPointer(colorAttribLoc, size, type, normalization, stride, offset);
-
 
     return vao;
 }
@@ -235,8 +206,7 @@ function initialize() {
 
     var posBuffer = createBuffer(triangles['positions']);
     var colorBuffer = createBuffer(triangles['colors']);
-    var posColorBuffer = createBuffer(triangles['poscolors']);
-    vao = createVAO(posAttribLoc, colorAttribLoc, posBuffer, colorBuffer, posColorBuffer);
+    vao = createVAO(posAttribLoc, colorAttribLoc, posBuffer, colorBuffer);
 
     window.requestAnimationFrame(draw);
 }
